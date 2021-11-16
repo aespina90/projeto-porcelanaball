@@ -1,0 +1,8 @@
+Endereço de Acesso: webapp.vps-kinghost.net
+IP: 189.126.105.79
+Usuário: root
+Senha de Acesso: sg1979@A
+
+mysql
+user:root
+senha: sg1979andre

@@ -1,0 +1,24 @@
+
+INSERT INTO  porcelanaball.aluno (porcelanaball.aluno.nome, porcelanaball.aluno.data_nascimento, porcelanaball.aluno.peso, porcelanaball.aluno.altura, porcelanaball.aluno.telefone_residencial, porcelanaball.aluno.telefone_celular, porcelanaball.aluno.cpf, porcelanaball.aluno.rg, porcelanaball.aluno.biometria, porcelanaball.aluno.ativo)
+VALUES ("Diego",'1992-12-14', 11, 1,"1211212","1121221","45545455","454545","asjadsjkas111hdashjdas1biometria",1);
+
+INSERT INTO  porcelanaball.aluno_treino (porcelanaball.aluno_treino.codigo, porcelanaball.aluno_treino.treino, porcelanaball.aluno_treino.aluno_codigo)
+VALUES (1,"asassaasasasaas",1);
+
+INSERT INTO `porcelanaball`.`forma_pagamento` (`DESCRICAO`) VALUES ('Cartão de Débito');
+INSERT INTO `porcelanaball`.`forma_pagamento` (`DESCRICAO`) VALUES ('Cartão de Crédito');
+INSERT INTO `porcelanaball`.`forma_pagamento` (`DESCRICAO`) VALUES ('Dinheiro');
+INSERT INTO `porcelanaball`.`forma_pagamento` (`DESCRICAO`) VALUES ('Cheque');
+
+INSERT INTO `porcelanaball`.`modulo` (`DESCRICAO`) VALUES ('Academia');
+INSERT INTO `porcelanaball`.`modulo` (`DESCRICAO`) VALUES ('Quadras');
+INSERT INTO `porcelanaball`.`modulo` (`DESCRICAO`) VALUES ('Bar/Restaurante');
+
+INSERT INTO `porcelanaball`.`lancamento_tipo` (`DESCRICAO`) VALUES ('Entrada');
+INSERT INTO `porcelanaball`.`lancamento_tipo` (`DESCRICAO`) VALUES ('Saída');
+
+INSERT INTO `porcelanaball`.`user` (`username`, `password`, `role`) VALUES ('batman', 'batman', 'manager');
+INSERT INTO `porcelanaball`.`user` (`username`, `password`, `role`) VALUES ('robin', 'robin', 'employee');
+
+INSERT INTO `porcelanaball`.`modalidade` (`CODIGO`, `DESCRICAO`) VALUES ('1', 'FUTEBOL');
+INSERT INTO `porcelanaball`.`modalidade` (`CODIGO`, `DESCRICAO`) VALUES ('2', 'MUSCULAÇÃO');

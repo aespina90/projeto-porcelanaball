@@ -1,0 +1,159 @@
+Versao 1.0.0.0
+
+Versão Inicial 20/11/2020
+
+1- ) cadastro de alunos para preencher a tabela aluno.
+		
+		(IMPLEMENTADO - 20/11/2020)
+		--- quando um aluno é cadastrado, realiza a verificação se aquele aluno já é cadastrado, se não existe
+			realiza seu cadastro. 
+
+
+2- ) Uma tela de cadastro de treino do aluno, para vincular um codigo de aluno á um treino.
+		
+		(IMPLEMENTADO - 26/11/2020)
+		--- quando um treino for lançado para um codigo de aluno, a api faz a validacao para ver se esse codigo
+			de aluno existe, apos verificada sua existencia salva o treino do mesmo com a relação de codigo
+		(IMPLEMENTADO - 27/11/2020)
+		--- aluno tem que estar ativo.
+		(IMPLEMENTADO - 27/11/2020)
+		--- um aluno pode ter varios treinos.
+		
+		--- Ao realizar o put (update) do Aluno: - os treinos que tiver no json e nao tiver na tabela adiciona.
+							 - os treinos que nao estiverem no json e tiverem na tabela 							 		   ele remove.
+
+3- ) Uma tela para cadastrar o aluno há um plano.
+		
+		--- quando um plano  é cadastrado para um aluno, precisamos fazer algumas validações:
+			1- verificar se o codigo do aluno existe na tabela aluno
+			2- verificar se o codigo plano existe na tabela plano.
+			3- verifica se o plano esta ativo.
+			4- verifica se o aluno esta ativo.
+			5- se o item 1,2,3,4 for verdadeiro, preenche a tabela aluno_possui_plano com
+				codigo aluno, codigo plano e sua validade.
+(IMPLEMENTADO - 11/2020)
+
+
+3-) Uma tela de cadastro de plano
+		--- quando for realizar o cadastro do plano, precisamos verificar se o codigo de 
+			modalidade ja existe.
+		-- verificar se o codigo do modulo ja existe
+		--- precisamos verificar se o plano ja existe
+(IMPLEMENTADO - 11/2020)
+
+4-) uma tela de cadastro de modalidade
+	--- (IMPLEMENTADO - 11/2020)
+	
+5-) Cadastrar modalidade a um funcionario (MODALIDADE_FUNCIONARIO)
+		--- VERIFICAR SE CODIGO DA MODALIDADE EXISTE
+		--- VERIFICAR SE O CODIGO DO FUNCIONARIO EXISTE
+		--- VERIFICAR SE AQUELE CODIGO DE MODALIDADE JA FOI CADASTRADO PARA O FUNCIONARIO
+		--- VERIFICAR SE FUNCIONARIO ESTA ATIVO PARA CADASTRAR
+(IMPLEMENTADO - 11/2020)
+
+6-) Cadastrar Produto
+		--- verificar se o produto ja existe
+		--- verificar se categoria existe
+(IMPLEMENTADO - 11/2020)
+	
+7-) Cadastrar Categoria	
+		--- verificar se categoria ja existe
+(IMPLEMENTADO - 11/2020)
+
+8-) Lancamento:
+		--- nao precisa validar produto, pois o mesmo pode lancar sem produto
+		--- verifica se o funcionario existe..
+		--- verificar se existe forma de pagamento..
+		--- quando existir vinculo com produto, é necessario realizar a verificacao do saldo
+			do produto primeiro, antes de concluir o lancamento
+			caso exista saldo para a quantidade lancada para o codigo de produto, realiza com sucesso
+			caso não exista saldo, retorna msg de erro.
+(IMPLEMENTADO - 03/12/2020)
+		
+		
+9-) quando aluno entrar na academia, precisa de validacoes:
+		1- verificar se aluno esta ativo
+		2- verificar se aluno possui plano
+		3- verificar se plano esta vencido
+		4- verificar se o plano é do modulo academia.
+
+10 -)
+	ROLES JWT:
+
+
+MODULO---JA VAI ESTAR PREENCHIDO
+
+TABELAS VÃO PRECISAR DE API
+ALUNO(X)
+PLANO(X)
+MODALIDADE(X)
+FUNCIONARIO(X)
+PRODUTO(X)
+PRODUTO_CATEGORIA(X)
+LANCAMENTO(X)
+
+
+
+CLASSES COM RELACAO DE BANCO
+
+
+Aluno:
+	- List<AlunoTreino> (IMPLEMENTADO - 26/11/2020)
+	- List<AlunoPossuiPlano> (IMPLEMENTADO - 07/12/2020)
+
+Funcionario:
+	- List<FuncionarioPermissao> (IMPLEMENTADO - 07/12/2020)
+	- List<ModalidadeFuncionario> (IMPLEMENTADO - 07/12/2020)
+	- List<FuncionarioPossuiPlano> (IMPLEMENTADO - 07/12/2020)
+
+Lancamento: 
+	- List<LancamentoProduto> (IMPLEMENTADO - 11/2020)
+
+----------------------------------------------------------
+A DEFINIR:
+
+Um fluxo de funcionamento offline, com possibilidade de alternar online ou off.
+Idéia: 1 - Manual, disponibiliza par ao usuario alternar
+       2 - Automatica, visualiza driver de rede e alterna url conforme rede OK ou nao.
+
+
+É necessário incluir forma_pagamento para boleto, transferencia, pix etc?
+
+########################################### DEFINICOES 23/12/2020 ###################################
+1- ADICIONAR LOGS, UTILIZAR LOG4NET; (IMPLEMENTADO EM 05/01/2021)
+
+
+VERBOS HTTP:
+
+GET->
+DEFINIR MODELO DE PAGINACAO DO BACK END COM FRONT END
+
+GET ID ->
+OK
+
+POST ->
+ATÉ O MOMENTO ATENDE, MAS FUTURAMENTE PODEMOS TRATAR A PERFORMANCE EM UMA SEGUNDA ENTREGA
+
+PUT ->
+1- ALTERA UM ALUNO POR VEZ(VALE PARA QUALQUER DOMINIO)
+2- ALUNO TEM UMA LISTA DE ALUNOTREINO E LISTA DE PLANOS.
+3- O FRONT VAI FAZER O CONTROLE DE ALUNOS EDITADOS, EXCLUIDOS E INCLUIDOS
+4- O FRONT SALVA ESSES TIPOS EM CADA OBJETO, E DEPOIS E CHAMADA A API PARA CADA TIPO.
+
+DELETE ->
+1- O FRONT VAI FAZER O CONTROLE DE ALUNOS EDITADOS, EXCLUIDOS E INCLUIDOS
+2- O FRONT SALVA ESSES TIPOS EM CADA OBJETO, E DEPOIS E CHAMADA A API PARA CADA TIPO.
+
+########################################### DEFINICOES 07/01/2021 ###################################
+
+lancamento
+	campo (aluno_codigo) = tabela (LANCAMENTO_ALUNO) onde a tabela será uma lista em lancamento
+	campo (forma_pagamento_codigo) = tabela (LANCAMENTO_FORMA_PAGAMENTO) onde a tabela será uma lista em lancamento
+	
+	
+ADICIONAR NOVAS TABELAS NO MER DO BANCO
+	LANCAMENTO_TIPO
+	LANCAMENTO_FORMA_PAGAMENTO
+	LANCAMENTO_ALUNO
+	
+REFATORACAO NOS NOMES DAS TABELAS
